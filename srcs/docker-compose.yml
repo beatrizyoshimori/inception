@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  mariadb:
+    container_name: mariadb
+    image: mariadb:11.4.1-rc-jammy
+    # build:
+    #   context: requirements/mariadb
+    environment:
+      MYSQL_DATABASE: database
+      MYSQL_USER: bia
+      MYSQL_PASSWORD: oi
+      MYSQL_ROOT: admin
+      MYSQL_ROOT_PASSWORD: admin
