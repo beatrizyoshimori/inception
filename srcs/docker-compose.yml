@@ -1,14 +1,36 @@
 version: '3'
 
+networks:
+  inception_network:
+
+# secrets:
+#   secrets_env:
+#     file: .env
+
 services:
   mariadb:
     container_name: mariadb
-    image: mariadb:11.4.1-rc-jammy
-    # build:
-    #   context: requirements/mariadb
+    image: mariadb
+    # restart: always
+    build:
+      context: requirements/mariadb
     environment:
-      MYSQL_DATABASE: database
-      MYSQL_USER: bia
-      MYSQL_PASSWORD: oi
-      MYSQL_ROOT: admin
-      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: "${MYSQL_DATABASE}"
+      MYSQL_USER: "${MYSQL_USER}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+      MYSQL_ROOT: "${MYSQL_ROOT}"
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+    # volumes:
+    #   - mariadb-volume:/var/lib/mysql
+    # networks:
+    #   - inception_network
+    # secrets:
+    #   - secrets_env
+
+# volumes:
+#   mariadb-volume:
+#     driver: local
+#     driver_opts:
+#       type: none
+#       o: bind
+#       device: /home/byoshimo/data/mariadb
