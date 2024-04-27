@@ -18,7 +18,7 @@ if [ ! -f ./wp-config.php ]; then
 
 	wp core install --allow-root						\
 		--path=/var/www/wordpress						\
-		--url=dapaulin.42.fr							\
+		--url=byoshimo.42.fr							\
 		--title="Ohhhh God Dawn"						\
 		--admin_user=$WP_ROOT							\
 		--admin_password=$WP_ROOT_PASSWORD				\
