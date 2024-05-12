@@ -19,7 +19,7 @@ if [ ! -f ./wp-config.php ]; then
 	wp core install --allow-root						\
 		--path=/var/www/wordpress						\
 		--url=byoshimo.42.fr							\
-		--title="Ohhhh God Dawn"						\
+		--title="Inception"								\
 		--admin_user=$WP_ROOT							\
 		--admin_password=$WP_ROOT_PASSWORD				\
 		--admin_email=$WP_ROOT@student.42sp.org.br
@@ -32,3 +32,26 @@ if [ ! -f ./wp-config.php ]; then
 fi
 
 php-fpm81 -F -R
+
+
+    # #!/bin/ash
+    # cd /var/www/wordpress
+
+    # cp wp-config-sample.php wp-config.php
+
+    # sed -i "s/database_name_here/${MYSQL_DATABASE}/" wp-config.php
+    # sed -i "s/username_here/${MYSQL_USER}/" wp-config.php
+    # sed -i "s/password_here/${MYSQL_PASSWORD}/" wp-config.php
+    # sed -i "s/localhost/${WP_DATABASE_HOST}/" wp-config.php
+
+    # wp core install --allow-root \
+    #     --url="byoshimo.42.fr" \
+    #     --title="Inception" \
+    #     --admin_user="${WP_ROOT}" \
+    #     --admin_password="${WP_ROOT_PASSWORD}" \
+    #     --admin_email="$WP_ROOT@student.42sp.org.br" \
+    #     --skip-email
+
+    # wp user create "${WP_USER}" "${$WP_USER}@student.42sp.org.br" --user_pass="${WP_USER_PASSWORD}" --allow-root
+
+    # php-fpm81 -F
