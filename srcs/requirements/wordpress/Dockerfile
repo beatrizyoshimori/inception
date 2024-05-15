@@ -23,7 +23,7 @@ RUN mkdir -p /var/www/wordpress
 ADD ./conf/start_wordpress.sh /var/www/wordpress/start_wordpress.sh
 WORKDIR /var/www/wordpress
 
-RUN wp core download --allow-root --version=6.3
+RUN wp core download --allow-root
 
 EXPOSE 9000
 RUN echo "listen = 0.0.0.0:9000" >> /etc/php81/php-fpm.d/www.conf

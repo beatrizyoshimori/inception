@@ -4,9 +4,9 @@ networks:
   inception_network:
     name: inception
 
-secrets:
-  secrets_env:
-    file: .env
+# secrets:
+#   secrets_env:
+#     file: .env
 
 services:
   mariadb:
@@ -25,8 +25,8 @@ services:
       - mariadb-volume:/var/lib/mysql
     networks:
       - inception_network
-    secrets:
-      - secrets_env
+    env_file:
+      - .env
 
   wordpress:
     container_name: wordpress
@@ -49,8 +49,8 @@ services:
       - wordpress-volume:/var/www/wordpress
     networks:
       - inception_network
-    secrets:
-      - secrets_env
+    env_file:
+      - .env
 
   nginx:
     container_name: nginx

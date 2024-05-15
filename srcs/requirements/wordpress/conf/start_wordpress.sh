@@ -22,7 +22,8 @@ if [ ! -f ./wp-config.php ]; then
 		--title="Inception"								\
 		--admin_user=$WP_ROOT							\
 		--admin_password=$WP_ROOT_PASSWORD				\
-		--admin_email=$WP_ROOT@student.42sp.org.br
+		--admin_email=$WP_ROOT@student.42sp.org.br		\
+		--skip-email
 
 	wp user create --allow-root 						\
 		--path=/var/www/wordpress						\
@@ -52,6 +53,6 @@ php-fpm81 -F -R
     #     --admin_email="$WP_ROOT@student.42sp.org.br" \
     #     --skip-email
 
-    # wp user create "${WP_USER}" "${$WP_USER}@student.42sp.org.br" --user_pass="${WP_USER_PASSWORD}" --allow-root
+    # wp user create "${WP_USER}" "${$WP_USER}@student.42sp.org.br" --user_pass="${WP_PASSWORD}" --allow-root
 
     # php-fpm81 -F
