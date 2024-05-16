@@ -4,10 +4,6 @@ networks:
   inception_network:
     name: inception
 
-# secrets:
-#   secrets_env:
-#     file: .env
-
 services:
   mariadb:
     container_name: mariadb
@@ -15,12 +11,12 @@ services:
     restart: always
     build:
       context: requirements/mariadb
-    environment:
-      MYSQL_DATABASE: "${MYSQL_DATABASE}"
-      MYSQL_USER: "${MYSQL_USER}"
-      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
-      MYSQL_ROOT: "${MYSQL_ROOT}"
-      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      args:
+        - MYSQL_DATABASE
+        - MYSQL_USER
+        - MYSQL_PASSWORD
+        - MYSQL_ROOT
+        - MYSQL_ROOT_PASSWORD
     volumes:
       - mariadb-volume:/var/lib/mysql
     networks:
@@ -44,7 +40,7 @@ services:
       WP_PASSWORD: "${WP_PASSWORD}"
       WP_ROOT: "${WP_ROOT}"
       WP_ROOT_PASSWORD: "${WP_ROOT_PASSWORD}"
-      WP_DATABASE_HOST: "mariadb"
+      WP_DATABASE_HOST: "${WP_DATABASE_HOST}"
     volumes:
       - wordpress-volume:/var/www/wordpress
     networks:
